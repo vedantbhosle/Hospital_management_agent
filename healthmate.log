@@ -292,3 +292,91 @@ violations {
 2025-12-01 15:27:37,232 - ReminderAgent - INFO - Reminder b6d8c91e-0b9b-477a-bcd9-e70f45780d32 sent and marked.
 2025-12-01 15:27:37,232 - Tracer - INFO - [ReminderAgent] Completed run_cycle in 0.00s
 2025-12-01 15:27:37,232 - OrchestratorAgent - INFO - Workflow completed.
+2025-12-01 16:45:16,138 - DoctorScheduleAgent - INFO - Fetching schedule for Dr. Smith on 2025-12-01
+2025-12-01 16:47:47,843 - PatientInsightAgent - INFO - Generating insight for patient p_001
+2025-12-01 17:15:35,893 - DoctorScheduleAgent - INFO - Fetching schedule for Dr. Smith on 2025-12-01
+2025-12-01 17:17:05,579 - DoctorScheduleAgent - INFO - Fetching schedule for Dr. Strange on 2025-12-01
+2025-12-01 17:17:39,514 - DoctorScheduleAgent - INFO - Fetching schedule for Dr. Strange on 2025-12-01
+2025-12-01 17:17:46,859 - PatientInsightAgent - INFO - Generating insight for patient p_123
+2025-12-01 17:17:59,400 - DoctorScheduleAgent - INFO - Fetching schedule for Dr. Smith on 2025-12-01
+2025-12-01 17:18:09,298 - PatientInsightAgent - INFO - Generating insight for patient p_ddeffd
+2025-12-01 17:19:49,125 - DoctorScheduleAgent - INFO - Fetching schedule for Smith on 2025-12-01
+2025-12-01 17:20:04,665 - DoctorScheduleAgent - INFO - Fetching schedule for Dr. Smith on 2025-12-01
+2025-12-01 17:20:57,052 - PatientInsightAgent - INFO - Generating insight for patient eval_p1
+2025-12-01 18:05:08,421 - LlmInfrastructure - WARNING - GEMINI_API_KEY not found. Agent will not work correctly.
+2025-12-01 18:05:08,501 - LlmInfrastructure - WARNING - GEMINI_API_KEY not found. Agent will not work correctly.
+2025-12-01 18:07:20,279 - DoctorScheduleAgent - INFO - Processing query: Doctor ID: Dr. Smith, Date: 2025-12-01. Question: what is my schedule
+2025-12-01 18:07:20,279 - LlmInfrastructure - INFO - [DoctorScheduleAgent] User: Doctor ID: Dr. Smith, Date: 2025-12-01. Question: what is my schedule
+2025-12-01 18:07:22,754 - LlmInfrastructure - INFO - [DoctorScheduleAgent] Agent: On Monday, December 1, 2025, you have 9 appointments. The first appointment is with Alice Smith at 09:00, followed by John Doe also at 09:00, and vedant at 09:00. You have multiple appointments scheduled at the same time, which may indicate a scheduling error.
+2025-12-01 18:08:10,361 - DoctorScheduleAgent - INFO - Processing query: Doctor ID: smith, Date: 2025-12-01. Question: what is my schedule
+2025-12-01 18:08:10,361 - LlmInfrastructure - INFO - [DoctorScheduleAgent] User: Doctor ID: smith, Date: 2025-12-01. Question: what is my schedule
+2025-12-01 18:08:12,199 - LlmInfrastructure - INFO - [DoctorScheduleAgent] Agent: Dear Dr. Smith, your schedule for December 1st, 2025 is currently empty.
+2025-12-01 18:08:33,439 - DoctorScheduleAgent - INFO - Processing query: Doctor ID: Dr. Smith, Date: 2025-12-01. Question: what is my schedule
+2025-12-01 18:08:33,439 - LlmInfrastructure - INFO - [DoctorScheduleAgent] User: Doctor ID: Dr. Smith, Date: 2025-12-01. Question: what is my schedule
+2025-12-01 18:08:35,306 - LlmInfrastructure - INFO - [DoctorScheduleAgent] Agent: Your schedule for December 1, 2025, is as follows:
+
+You have 9 appointments. All appointments are confirmed.
+
+Here are the details of the appointments:
+- 09:00 AM: Alice Smith (Age: 45, Gender: Female)
+- 09:00 AM: John Doe (Age: 30, Gender: Male)
+- 09:00 AM: vedant (Age: 30, Gender: Unknown)
+- 09:00 AM: John Doe (Age: 45, Gender: Male)
+- 10:00 AM: John Doe (Age: 30, Gender: Male)
+2025-12-01 18:08:48,668 - DoctorScheduleAgent - INFO - Processing query: Doctor ID: Dr. Smith. Question: tell me about vedant
+2025-12-01 18:08:48,668 - LlmInfrastructure - INFO - [DoctorScheduleAgent] User: Doctor ID: Dr. Smith. Question: tell me about vedant
+2025-12-01 18:08:50,410 - LlmInfrastructure - INFO - [DoctorScheduleAgent] Agent: The patient Vedant is scheduled to see you on December 1, 2025, at 09:00 AM. This is a confirmed appointment.
+2025-12-01 18:09:04,261 - PatientInsightAgent - INFO - Processing query: give me report on vedant
+2025-12-01 18:09:04,262 - LlmInfrastructure - INFO - [PatientInsightAgent] User: give me report on vedant
+2025-12-01 18:09:04,965 - LlmInfrastructure - INFO - [PatientInsightAgent] Agent: I need a patient ID to get the report. Can you please provide the patient ID for Vedant?
+2025-12-01 18:09:18,623 - DoctorScheduleAgent - INFO - Processing query: Doctor ID: Dr. Smith, Date: 2025-12-01. Question: give me patient id for all the appointments
+2025-12-01 18:09:18,623 - LlmInfrastructure - INFO - [DoctorScheduleAgent] User: Doctor ID: Dr. Smith, Date: 2025-12-01. Question: give me patient id for all the appointments
+2025-12-01 18:09:20,307 - LlmInfrastructure - INFO - [DoctorScheduleAgent] Agent: Here are the patient IDs for all your appointments on December 1, 2025:
+
+- eval_p1
+- eval_p1
+- p_123
+- p_123
+- p_123
+- p_ddeffd
+- p_001
+- p_123
+- p_123
+2025-12-01 18:09:34,789 - PatientInsightAgent - INFO - Processing query: give me patient id with the corresponding name
+2025-12-01 18:09:34,789 - LlmInfrastructure - INFO - [PatientInsightAgent] User: give me patient id with the corresponding name
+2025-12-01 18:09:35,494 - LlmInfrastructure - INFO - [PatientInsightAgent] Agent: I can't provide a list of patient IDs with their corresponding names. My capabilities are limited to retrieving information based on a specific `patient_id`. Please provide the patient ID for Vedant so I can fetch the report.
+2025-12-01 18:09:47,824 - PatientInsightAgent - INFO - Processing query: what is patient id of vedant
+2025-12-01 18:09:47,824 - LlmInfrastructure - INFO - [PatientInsightAgent] User: what is patient id of vedant
+2025-12-01 18:09:48,836 - LlmInfrastructure - INFO - [PatientInsightAgent] Agent: I cannot look up a patient's ID based on their name. Please ask me to get the report for a specific patient ID, and I will do my best to assist you.
+2025-12-01 18:10:10,571 - PatientInsightAgent - INFO - Processing query: give me a report on patient p_ddeffd
+2025-12-01 18:10:10,572 - LlmInfrastructure - INFO - [PatientInsightAgent] User: give me a report on patient p_ddeffd
+2025-12-01 18:10:14,149 - LlmInfrastructure - INFO - [PatientInsightAgent] Agent: **Patient Report for p_ddeffd (Vedant)**
+
+**Demographics:**
+*   **Patient ID:** p_ddeffd
+*   **Name:** Vedant
+*   **Age:** 30
+*   **Gender:** Unknown
+*   **Contact:** 555-0000, vedant@example.com
+
+**Visit History:**
+
+*   **Visit 1:**
+    *   **Timestamp:** December 1, 2025, 04:33:14
+    *   **Department:** General
+    *   **Symptoms:** Stomach pain
+    *   **Severity:** Low
+    *   **Triage Summary:** Stomach pain can be caused by a variety of non-urgent issues and is best evaluated by a general practitioner.
+
+*   **Visit 2:**
+    *   **Timestamp:** December 1, 2025, 03:39:40
+    *   **Department:** Cardiology
+    *   **Symptoms:** Severe chest pain and shortness of breath
+    *   **Severity:** Critical
+    *   **Triage Summary:** Patient reports Severe chest pain and shortness of breath. Immediate cardiology consultation required.
+
+**Medical Reports:**
+*   No reports available for this patient.
+
+**Summary:**
+Vedant, a 30-year-old patient, has two recorded visits. The first was to the General department for low-severity stomach pain. The second, more critical visit was to Cardiology due to severe chest pain and shortness of breath, requiring immediate consultation. There are no medical reports available in the system for this patient.
