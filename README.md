@@ -1,64 +1,77 @@
-# HealthMate AI
+# 🏥 HealthMate AI
 
-HealthMate AI is a Python-based multi-agent healthcare assistant designed to automate patient triage, report extraction, appointment scheduling, and reminders. It implements Google ADK concepts such as multi-agent orchestration, parallel execution, and tool-based interactions.
+HealthMate AI is a comprehensive, multi-agent healthcare assistant designed to streamline patient management and clinical workflows. It features a unified CLI with role-based access for both **Staff** and **Doctors**, powered by Google's Gemini LLM.
 
-## Features
+## ✨ Key Features
 
-- **Triage Agent**: Analyzes symptoms using LLM (Gemini) to determine severity and recommended department.
-- **Report Parser Agent**: Extracts medical data from PDF reports.
-- **Scheduler Agent**: Checks doctor availability and books appointments sequentially.
-- **Reminder Agent**: Sends automated reminders for upcoming appointments.
-- **Orchestrator Agent**: Manages the end-to-end patient workflow.
-- **Memory System**: Maintains session state and long-term patient history.
-- **Observability**: Built-in tracing and structured logging.
+### 🔐 Unified Role-Based System
+*   **Single Entry Point**: One command to access the entire system.
+*   **Staff Portal**:
+    *   **Patient Management**: Register new patients with detailed profiles (Age, Gender, Contact) or lookup existing ones.
+    *   **Smart Triage**: AI-powered symptom analysis to determine severity and department.
+    *   **Workflow Automation**: Automatically parses reports, books appointments, and sends SMS reminders.
+*   **Doctor Portal**:
+    *   **Conversational Interface**: Chat with your clinical data using natural language.
+    *   **Schedule Management**: Ask "What is my schedule today?" to see appointments.
+    *   **Patient Insights**: Ask "Tell me about John Doe" to get a summarized medical history.
 
-## Architecture
+### 🤖 Intelligent Agents
+1.  **Triage Agent** (`gemini-2.5-flash-lite`): Analyzes symptoms and routes to Cardiology, Neurology, Orthopedics, or General.
+2.  **Orchestrator Agent**: Coordinates the end-to-end patient journey.
+3.  **Doctor Schedule Agent**: Retrieves and summarizes doctor appointments.
+4.  **Patient Insight Agent**: Synthesizes patient history and medical reports.
+5.  **Reminder Agent**: Background process for patient engagement.
 
-The system follows a hub-and-spoke architecture where the **OrchestratorAgent** coordinates specialized agents:
+## 🚀 Quick Start
 
-1.  **Triage** and **Report Parsing** run in parallel.
-2.  **Scheduling** happens sequentially based on triage results.
-3.  **Reminders** are triggered asynchronously.
+### 1. Install Dependencies
+```bash
+pip install -r healthmate_ai/requirements.txt
+```
 
-## Setup
+### 2. Set API Key
+You need a Google Gemini API key for the AI features.
+```bash
+export GEMINI_API_KEY="your_api_key_here"
+```
 
-1.  **Install Dependencies**:
-    ```bash
-    pip install -r healthmate_ai/requirements.txt
-    pip install fpdf  # For sample generation
-    ```
-
-2.  **Environment Variables**:
-    Set your Gemini API key (optional, mock mode used if missing):
-    ```bash
-    export GEMINI_API_KEY="your_api_key_here"
-    ```
-
-## Usage
-
-### CLI Mode
-Run the interactive CLI:
+### 3. Run the System
 ```bash
 export PYTHONPATH=$PYTHONPATH:.
 python healthmate_ai/main.py --cli
 ```
 
-### Run Evaluation
-Run the end-to-end test scenario:
-```bash
-export PYTHONPATH=$PYTHONPATH:.
-python healthmate_ai/main.py --test-scenario healthmate_ai/evaluation/end_to_end_eval.json
-```
+## 📖 Usage Guide
 
-### Generate Sample Data
-Create a sample medical report PDF:
-```bash
-python create_sample_pdf.py
-```
+### 👩‍💼 Staff Workflow
+1.  **Login**: Select Option `[1] Staff Portal`.
+2.  **Identify Patient**: Enter a name.
+    *   *New Patient*: You will be prompted for Age, Gender, Phone, Email. (Press Enter to skip/default).
+    *   *Existing Patient*: System retrieves their ID automatically.
+3.  **Process Case**: Enter symptoms (e.g., "severe chest pain") and optional PDF report path.
+4.  **View Results**: The system generates a report, books a doctor, and sends a reminder.
+5.  **Loop**: The system returns to patient identification for the next case.
 
-## Directory Structure
+### 👨‍⚕️ Doctor Workflow
+1.  **Login**: Select Option `[2] Doctor Portal`.
+2.  **Identify**: Enter your Doctor ID (e.g., "Dr. Smith").
+3.  **Interact**:
+    *   *"What is my schedule?"*
+    *   *"Who is my first patient?"*
+    *   *"Show me the history for [Patient Name]"*
 
-- `healthmate_ai/agents`: Agent implementations.
-- `healthmate_ai/tools`: Tool implementations (DB, PDF, Notification, Scheduling).
-- `healthmate_ai/core`: Core runtime (Memory, Tracing, Logger).
-- `healthmate_ai/evaluation`: Test scenarios.
+## 📂 Project Structure
+
+*   `healthmate_ai/main.py`: **Main Entry Point** (CLI & Auth Logic).
+*   `healthmate_ai/agents/`:
+    *   `triage_agent.py`: Symptom analysis.
+    *   `doctor_schedule_agent.py`: Doctor interactions.
+    *   `patient_insight_agent.py`: Patient summaries.
+    *   `orchestrator_agent.py`: Workflow coordination.
+*   `healthmate_ai/tools/`:
+    *   `database_tool.py`: SQLite database manager.
+    *   `scheduling_openapi_tool.py`: Mock appointment booking.
+*   `healthmate_ai/core/`: Logging, Tracing, and LLM setup.
+
+## 🏗️ Architecture
+The system uses a **Hub-and-Spoke** architecture where the `OrchestratorAgent` manages the patient flow, while specialized `LlmAgents` handle the doctor's conversational queries. All data is persisted in a local SQLite database (`healthmate.db`).
