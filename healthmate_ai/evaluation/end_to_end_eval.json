@@ -1,0 +1,15 @@
+{
+    "patient": {
+        "patient_id": "eval_p1",
+        "name": "Alice Smith",
+        "age": 45,
+        "gender": "Female",
+        "phone": "555-9999",
+        "email": "alice@example.com"
+    },
+    "symptoms": "Severe chest pain and shortness of breath",
+    "report_path": "healthmate_ai/samples/sample_report.pdf",
+    "expected_output": {
+        "department": "Cardiology"
+    }
+}

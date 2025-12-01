@@ -1,0 +1,6 @@
+google-generativeai
+pypdf
+pdfplumber
+aiohttp
+python-dotenv
+jsonschema
